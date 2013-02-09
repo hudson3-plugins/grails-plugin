@@ -79,7 +79,7 @@ public final class GrailsInstallation extends ToolInstallation implements Enviro
 
         private void loadFromOldConfigFile() {
             XStream2 stream = new XStream2();
-            stream.addCompatibilityAlias(GrailsBuilder.DescriptorImpl.class.getName(), GrailsInstallation.DescriptorImpl.class);
+            stream.alias(GrailsBuilder.DescriptorImpl.class.getName(), GrailsInstallation.DescriptorImpl.class);
             XmlFile file = new XmlFile(stream, new File(Hudson.getInstance().root, GrailsBuilder.class.getName() + ".xml"));
             try {
                 file.unmarshal(this);
